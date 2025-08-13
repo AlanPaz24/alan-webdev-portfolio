@@ -1,0 +1,53 @@
+:root{
+  --blue-1: #0d6efd;
+  --blue-2: #0b62d9;
+  --bg: linear-gradient(180deg,var(--blue-1),var(--blue-2));
+  --glass: rgba(255,255,255,0.08);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+body{margin:0;color:#fff;background:var(--bg);}
+
+/* NAV */
+.navbar{background:transparent !important}
+.navbar .nav-link{color: rgba(255,255,255,0.9);}
+.navbar .nav-link:hover{color:#fff;}
+
+/* HERO */
+.hero{min-height:64vh; display:flex; align-items:center; justify-content:center;}
+.perfil-img{
+  width:180px;
+  height:180px;
+  object-fit:cover;
+  border-radius:50%;
+  border:6px solid #fff;
+  box-shadow:0 10px 30px rgba(4,10,25,0.35);
+}
+
+/* Sections */
+section{padding:60px 0; color: #222; background: none;}
+#about, #services{background: none;}
+#projects{background:#f7f9fc;}
+#contact{background:#f7f9fc}
+
+/* Headings */
+h2{color: #041427; font-weight:700; margin-bottom:1rem}
+.lead{color:rgba(255,255,255,0.95)}
+
+/* Cards */
+.card{border:0; border-radius:12px; overflow:hidden}
+.card-img-top{height:170px; object-fit:cover}
+
+/* service boxes */
+.service{background:#fff;border-radius:10px;box-shadow:0 6px 18px rgba(16,24,40,0.06); color:#041427}
+.service .bi{color:var(--blue-1)}
+
+/* Footer */
+footer{background:transparent;color:rgba(255,255,255,0.85)}
+
+/* responsive tweaks */
+@media (max-width:767px){
+  .perfil-img{width:150px;height:150px}
+  .hero{padding-top:70px}
+}
