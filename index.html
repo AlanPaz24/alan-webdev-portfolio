@@ -1,88 +1,336 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-AR" data-bs-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alan WebDev - Portafolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alan Paz — Desarrollador Frontend</title>
+  <meta name="description" content="Portafolio de Alan Paz, desarrollador web frontend. HTML, CSS, JavaScript y Bootstrap. Proyectos, habilidades y contacto." />
+  <link rel="canonical" href="https://alanpaz24.github.io/alan-webdev-portfolio/" />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Open Graph / SEO social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Portafolio de Alan Paz — Frontend Developer" />
+  <meta property="og:description" content="Desarrollo web con HTML, CSS, JavaScript y Bootstrap. Mira mis proyectos y contactame." />
+  <meta property="og:url" content="https://alanpaz24.github.io/alan-webdev-portfolio/" />
+  <meta property="og:image" content="img/og-image.jpg" />
+  <meta name="theme-color" content="#0d6efd" />
+
+  <!-- Favicon (reemplazar con tus archivos reales) -->
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+
+  <!-- Bootstrap & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand: #0d6efd;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-feature-settings: "cv02","cv03","cv04","cv11"; }
+    .hero {
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(13,110,253,.15), transparent),
+                  radial-gradient(1000px 500px at 90% 30%, rgba(111,66,193,.15), transparent);
+    }
+    .badge-skill { text-transform: none; }
+    .section-title span {
+      display:inline-block; padding:.25rem .5rem; border-radius:999px;
+      background: rgba(13,110,253,.15); color: var(--brand); font-weight:600;
+      margin-bottom:.5rem; font-size:.9rem;
+    }
+    .section-title h2 { font-weight:800; letter-spacing:.2px; }
+    .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.15); }
+    .link-underline { text-decoration: underline; text-underline-offset: .2em; }
+    .avatar { max-width: 240px; }
+    .nav-link { font-weight: 600; }
+    .card:hover { transform: translateY(-2px); transition: transform .2s ease; }
+    .focus-ring:focus { outline: 4px solid rgba(13,110,253,.4); outline-offset: 2px; }
+    .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.15); }
+    .text-gradient { background: linear-gradient(90deg, #0d6efd, #6f42c1); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  </style>
+
+  <!-- JSON-LD (ajusta tus datos) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alan Paz",
+    "jobTitle": "Frontend Developer",
+    "url": "https://alanpaz24.github.io/alan-webdev-portfolio/",
+    "sameAs": [
+      "https://github.com/AlanPaz24"
+    ]
+  }
+  </script>
 </head>
-<body>
-  <!-- Hero -->
-  <header class="hero fade-in">
-    <img src="/img/fotoPerfilAlan.jpg" alt="Foto de Alan" class="perfil" />
-    <h1>Alan WebDev</h1>
-    <p class="subtitulo">Desarrollador Web Frontend • HTML • CSS • JavaScript • Bootstrap</p>
-    <div class="botones">
-      <a href="#proyectos" class="btn primario">Ver proyectos</a>
-      <a href="#contacto" class="btn secundario">Contáctame</a>
+<body data-bs-spy="scroll" data-bs-target="#navMain" data-bs-offset="80" tabindex="0">
+  <!-- NAVBAR -->
+  <nav id="navMain" class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#home" aria-label="Inicio">
+        <i class="bi bi-braces"></i>
+        <span class="fw-bold">Alan<span class="text-primary">Paz</span></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Abrir navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navCollapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item ms-lg-3">
+            <button id="themeToggle" class="btn btn-sm btn-ghost text-white d-inline-flex align-items-center gap-2" type="button" aria-pressed="false" aria-label="Cambiar tema">
+              <i class="bi bi-moon-stars"></i><span class="d-none d-sm-inline">Tema</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero pt-5">
+    <div class="container">
+      <div class="row align-items-center min-vh-100">
+        <div class="col-lg-7 order-2 order-lg-1 py-5">
+          <span class="badge text-bg-primary">Disponible para oportunidades</span>
+          <h1 class="display-4 fw-extrabold mt-3">Hola, soy <span class="text-gradient">Alan Paz</span> 👋</h1>
+          <p class="lead text-secondary">Desarrollador <strong>Frontend</strong> con foco en <strong>HTML, CSS, JavaScript</strong> y <strong>Bootstrap</strong>. Me gusta crear interfaces limpias, accesibles y rápidas.</p>
+          <div class="d-flex gap-3 mt-4">
+            <a href="#proyectos" class="btn btn-primary btn-lg focus-ring"><i class="bi bi-kanban"></i> Ver proyectos</a>
+            <a href="#contacto" class="btn btn-outline-light btn-lg focus-ring"><i class="bi bi-envelope"></i> Contacto</a>
+          </div>
+          <div class="mt-4 text-secondary">
+            <i class="bi bi-geo-alt"></i> Argentina · Trabajo remoto o híbrido
+          </div>
+        </div>
+        <div class="col-lg-5 text-center order-1 order-lg-2 py-5">
+          <img src="img/perfil.jpg" class="img-fluid rounded-4 shadow-soft avatar" alt="Foto de Alan Paz" loading="lazy" width="480" height="480">
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Sobre mí -->
-  <section class="sobre-mi scroll-reveal" id="sobre-mi">
-    <h2>Sobre mí</h2>
-    <p>
-      Soy Alan, desarrollador frontend en formación. Me especializo en maquetación responsiva, optimización básica y creación de landing pages efectivas. Me encanta resolver problemas y aprender nuevas tecnologías.
-    </p>
-    <p class="stack"><strong>Trabajo con:</strong> HTML, CSS, Bootstrap, JavaScript, Handlebars, MongoDB (básico).</p>
-  </section>
-
-  <!-- Habilidades -->
-  <section class="habilidades scroll-reveal" id="habilidades">
-    <h2>Habilidades</h2>
-    <div class="skill">
-      <span>HTML & CSS</span>
-      <div class="barra"><div style="width: 90%"></div></div>
-    </div>
-    <div class="skill">
-      <span>Bootstrap / Responsivo</span>
-      <div class="barra"><div style="width: 85%"></div></div>
-    </div>
-    <div class="skill">
-      <span>JavaScript básico</span>
-      <div class="barra"><div style="width: 60%"></div></div>
-    </div>
-  </section>
-
-  <!-- Proyectos -->
-  <section class="proyectos scroll-reveal" id="proyectos">
-    <h2>Proyectos</h2>
-    <div class="grid-proyectos">
-      <div class="card">
-        <h3>Proyecto 1</h3>
-        <p>Descripción breve del proyecto.</p>
+  <!-- SOBRE MI -->
+  <section id="sobre-mi" class="py-5">
+    <div class="container">
+      <div class="section-title mb-4 text-center">
+        <span>Presentación</span>
+        <h2>Sobre mí</h2>
       </div>
-      <div class="card">
-        <h3>Proyecto 2</h3>
-        <p>Descripción breve del proyecto.</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <p class="fs-5">Soy un desarrollador frontend en formación con experiencia construyendo <em>landing pages</em> y sitios responsivos. Me enfoco en buenas prácticas, semántica HTML, estilos escalables y pequeños detalles de UX. Aprendo rápido y disfruto trabajar en equipo.</p>
+          <ul class="list-unstyled d-grid gap-2">
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-check2-circle text-primary"></i> Maquetación responsiva con Bootstrap 5</li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-check2-circle text-primary"></i> Accesibilidad básica (contraste, <code>aria-*</code>, foco visible)</li>
+            <li class="d-flex align-items-center gap-2"><i class="bi bi-check2-circle text-primary"></i> Optimización ligera (imágenes WebP, <code>loading="lazy"</code>)</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Contacto -->
-  <footer id="contacto" class="fade-in">
-    <h2>Contacto</h2>
-    <p>📧 tuemail@example.com</p>
+  <!-- HABILIDADES -->
+  <section id="habilidades" class="py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="section-title mb-4 text-center">
+        <span>Tech Stack</span>
+        <h2>Habilidades</h2>
+      </div>
+      <div class="row g-3 g-md-4">
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-code-slash fs-1"></i>
+              <h3 class="h5 mt-3">HTML & CSS</h3>
+              <p class="text-secondary small">Semántica y estilos modernos</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-bootstrap fs-1"></i>
+              <h3 class="h5 mt-3">Bootstrap 5</h3>
+              <p class="text-secondary small">Componentes y grid responsivo</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-braces fs-1"></i>
+              <h3 class="h5 mt-3">JavaScript</h3>
+              <p class="text-secondary small">Interacciones y validación</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-git fs-1"></i>
+              <h3 class="h5 mt-3">Git & GitHub</h3>
+              <p class="text-secondary small">Flujo básico de trabajo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 d-flex flex-wrap gap-2">
+        <span class="badge text-bg-secondary badge-skill">Handlebars (básico)</span>
+        <span class="badge text-bg-secondary badge-skill">MongoDB (básico)</span>
+        <span class="badge text-bg-secondary badge-skill">Figma</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="py-5">
+    <div class="container">
+      <div class="section-title mb-4 text-center">
+        <span>Portafolio</span>
+        <h2>Proyectos</h2>
+        <p class="text-secondary">Estoy construyendo casos prácticos. Pronto verás proyectos reales aquí.</p>
+      </div>
+      <div class="row g-3 g-md-4">
+        <!-- Card plantilla de caso (para duplicar luego) -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100">
+            <img src="img/placeholder.webp" class="card-img-top" alt="Miniatura del proyecto" loading="lazy" width="640" height="360">
+            <div class="card-body d-flex flex-column">
+              <h3 class="h5">Landing de producto</h3>
+              <p class="text-secondary small mb-3">UI responsive, accesibilidad y performance.</p>
+              <div class="mt-auto d-flex gap-2">
+                <a class="btn btn-sm btn-outline-primary" href="#" aria-disabled="true">Demo</a>
+                <a class="btn btn-sm btn-outline-light" href="#" aria-disabled="true">Código</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100">
+            <img src="img/placeholder.webp" class="card-img-top" alt="Miniatura del proyecto" loading="lazy" width="640" height="360">
+            <div class="card-body d-flex flex-column">
+              <h3 class="h5">Dashboard simple</h3>
+              <p class="text-secondary small mb-3">Tabla filtrable y gráficos básicos.</p>
+              <div class="mt-auto d-flex gap-2">
+                <a class="btn btn-sm btn-outline-primary" href="#" aria-disabled="true">Demo</a>
+                <a class="btn btn-sm btn-outline-light" href="#" aria-disabled="true">Código</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="card h-100">
+            <img src="img/placeholder.webp" class="card-img-top" alt="Miniatura del proyecto" loading="lazy" width="640" height="360">
+            <div class="card-body d-flex flex-column">
+              <h3 class="h5">E‑commerce club de fútbol</h3>
+              <p class="text-secondary small mb-3">Catálogo, carrito básico y checkout simulado.</p>
+              <div class="mt-auto d-flex gap-2">
+                <a class="btn btn-sm btn-outline-primary" href="#" aria-disabled="true">Demo</a>
+                <a class="btn btn-sm btn-outline-light" href="#" aria-disabled="true">Código</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="section-title mb-4 text-center">
+        <span>Hablemos</span>
+        <h2>Contacto</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="alert alert-info" role="alert">
+            También podés escribirme a <a class="link-underline" href="mailto:tuemail@example.com">tuemail@example.com</a>.
+          </div>
+          <form id="contactForm" class="needs-validation" novalidate action="https://formspree.io/f/xxxxxxxx" method="POST">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name" name="name" required />
+                <div class="invalid-feedback">Ingresá tu nombre.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required />
+                <div class="invalid-feedback">Ingresá un email válido.</div>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                <div class="invalid-feedback">Escribí un mensaje.</div>
+              </div>
+              <div class="col-12 d-flex align-items-center gap-3">
+                <button class="btn btn-primary" type="submit"><i class="bi bi-send"></i> Enviar</button>
+                <small class="text-secondary">* Se usa Formspree, reemplazá el ID del formulario.</small>
+              </div>
+            </div>
+          </form>
+          <div id="formAlert" class="alert d-none mt-3" role="alert"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4 border-top border-secondary">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <small class="text-secondary">© <span id="year"></span> Alan Paz. Hecho con Bootstrap.</small>
+      <div class="d-flex gap-3">
+        <a class="text-secondary" href="https://github.com/AlanPaz24" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github fs-4"></i></a>
+        <a class="text-secondary" href="https://www.linkedin.com/in/alanpaz" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin fs-4"></i></a>
+        <a class="text-secondary" href="mailto:tuemail@example.com" aria-label="Email"><i class="bi bi-envelope fs-4"></i></a>
+      </div>
+    </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.scroll-reveal');
-    window.addEventListener('scroll', () => {
-      reveals.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < window.innerHeight - 100) {
-          section.classList.add('visible');
-        }
+    // Año del footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Colapsar nav al hacer click en enlace (en móvil)
+    const navCollapse = document.getElementById('navCollapse');
+    navCollapse.querySelectorAll('a.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navCollapse);
+        bsCollapse.hide();
       });
     });
 
-    // Modo oscuro automático según hora
-    const hora = new Date().getHours();
-    if (hora >= 19 || hora <= 6) {
-      document.body.classList.add('modo-oscuro');
-    }
+    // Validación Bootstrap
+    (() => {
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', async (e) => {
+        if (!form.checkValidity()) { e.preventDefault(); e.stopPropagation(); }
+        form.classList.add('was-validated');
+      }, false);
+    })();
+
+    // Tema claro/oscuro con data-bs-theme
+    const htmlEl = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    if (stored) htmlEl.setAttribute('data-bs-theme', stored);
+
+    themeToggle.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-bs-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-bs-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'false' : 'true');
+    });
   </script>
 </body>
 </html>
